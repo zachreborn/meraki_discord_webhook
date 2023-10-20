@@ -1,39 +1,33 @@
 {
-    "content": "{{alertType}}",
     "embeds": [
         {
-            "title": "{{organizationName}}",
+            "title": "{{alertType}}",
             "url": "{{networkUrl}}",
-            "description": "{{alertType}}",
+            "color": "{% if alertLevel == 'info' %} 1752220 {% elsif alertLevel == 'warning' %} 16752640 {% elsif alertLevel == 'critical' %} 16711769 {% else %} 1752220 {% endif %}",
             "fields": [
                 {
                     "name": "Organization",
-                    "value": "{{organizationName}}",
+                    "value": "[{{organizationName}}]({{organizationUrl}})",
                     "inline": true
                 },
                 {
                     "name": "Network",
-                    "value": "{{networkName}}",
+                    "value": "[{{networkName}}]({{networkUrl}})",
                     "inline": true
                 },
                 {
                     "name": "Device",
-                    "value": "{{deviceName}}",
+                    "value": "[{{deviceName}}]({{deviceUrl}})",
                     "inline": true
-                },
-                {
-                    "name": "Device URL",
-                    "value": "{{deviceUrl}}",
-                    "inline": false
-                },
-                {
-                    "name": "Alert Type",
-                    "value": "{{alertType}}",
-                    "inline": false
                 },
                 {
                     "name": "Alert Level",
                     "value": "{{alertLevel}}",
+                    "inline": false
+                },
+                {
+                    "name": "Alert Data",
+                    "value": "{{alertData | json_markdown}}",
                     "inline": false
                 },
                 {
