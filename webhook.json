@@ -1,0 +1,47 @@
+{
+    "content": "{{alertType}}",
+    "embeds": [
+        {
+            "title": "{{organizationName}}",
+            "url": "{{networkUrl}}",
+            "description": "{{alertType}}",
+            "fields": [
+                {
+                    "name": "Organization",
+                    "value": "{{organizationName}}",
+                    "inline": true
+                },
+                {
+                    "name": "Network",
+                    "value": "{{networkName}}",
+                    "inline": true
+                },
+                {
+                    "name": "Device",
+                    "value": "{{deviceName}}",
+                    "inline": true
+                },
+                {
+                    "name": "Device URL",
+                    "value": "{{deviceUrl}}",
+                    "inline": false
+                },
+                {
+                    "name": "Alert Type",
+                    "value": "{{alertType}}",
+                    "inline": false
+                },
+                {
+                    "name": "Alert Level",
+                    "value": "{{alertLevel}}",
+                    "inline": false
+                },
+                {
+                    "name": "Occurred At",
+                    "value": "{{occurredAt}}",
+                    "inline": false
+                }
+            ]
+        }
+    ]
+}
