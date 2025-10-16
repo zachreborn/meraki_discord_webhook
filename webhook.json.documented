@@ -1,0 +1,56 @@
+{
+    // Discord webhook payload structure
+    "embeds": [
+        {
+            // Main title - displays the alert type (e.g., "Gateway down", "Port flapping")
+            "title": "{{alertType}}",
+            
+            // Clickable URL that takes users directly to the network dashboard
+            "url": "{{networkUrl}}",
+            
+            // Dynamic color based on alert severity using conditional logic
+            // Colors: info=blue(1752220), warning=orange(16752640), critical=red(16711769)
+            "color": "{% if alertLevel == 'info' %} 1752220 {% elsif alertLevel == 'warning' %} 16752640 {% elsif alertLevel == 'critical' %} 16711769 {% else %} 1752220 {% endif %}",
+            
+            // Structured fields that create the main content body
+            "fields": [
+                {
+                    // Organization section - shows org name with clickable link
+                    "name": "Organization",
+                    "value": "[{{organizationName}}]({{organizationUrl}})",
+                    "inline": true    // Allows this field to display side-by-side with others
+                },
+                {
+                    // Network section - shows network name with clickable link  
+                    "name": "Network",
+                    "value": "[{{networkName}}]({{networkUrl}})",
+                    "inline": true    // Groups with organization field in same row
+                },
+                {
+                    // Device section - shows device name with clickable link
+                    "name": "Device", 
+                    "value": "[{{deviceName}}]({{deviceUrl}})",
+                    "inline": true    // Completes the top row of 3 inline fields
+                },
+                {
+                    // Alert severity level - displayed prominently without links
+                    "name": "Alert Level",
+                    "value": "{{alertLevel}}",
+                    "inline": false   // Takes full width for emphasis
+                },
+                {
+                    // Raw alert data formatted as JSON for technical details
+                    "name": "Alert Data",
+                    "value": "{{alertData | json_markdown}}", // Pipe filter formats JSON nicely
+                    "inline": false   // Full width for readability
+                },
+                {
+                    // Timestamp when the alert occurred
+                    "name": "Occurred At", 
+                    "value": "{{occurredAt}}",
+                    "inline": false   // Full width for clear visibility
+                }
+            ]
+        }
+    ]
+}
